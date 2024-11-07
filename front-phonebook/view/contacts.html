@@ -1,0 +1,48 @@
+<div class="jumbotron">
+    <ui-accordions>
+        <ui-accordion title="Accordion">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, quasi.
+        </ui-accordion>
+        <ui-accordion title="Accordion">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, quasi.
+        </ui-accordion>
+        <ui-accordion title="Accordion">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, quasi.
+        </ui-accordion>
+    </ui-accordions>
+
+    <hr>
+
+    <h1>Phonebook</h1>
+    <input type="text" ng-model="searchCriteria" ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 0}}" placeholder="Whom are you searching?">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th><a href="" ng-click="order('name')">Name</a></th>
+                <th>Phone</th>
+                <th>Operator</th>
+            </tr>
+        </thead>
+        
+        <hr>
+
+        <tbody>
+            <tr
+                ng-class="{selected: contact.selected}"
+                ng-repeat="contact in contacts | filter:searchCriteria | orderBy:ordenation:direction"
+            >
+                <td><input type="checkbox" ng-model="contact.selected"></td>
+                <td><a href="#!/contact-info/{{contact.id}}">{{contact.name | name | ellipsis:15}}</a></td>
+                <td>{{::contact.phone}}</td>
+                <td>{{::contact.operator.name}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+    
+    <button><a href="#!/new-contact">New Contact</a></button>
+    <button ng-click="deleteContacts(contact.id)">Delete Contacts</button>
+</div>
