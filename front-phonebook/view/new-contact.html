@@ -1,0 +1,26 @@
+<form name="contactForm">
+    <input
+        class="form-control"
+        type="text"
+        ng-model="contact.name"
+        ng-required="true"
+        placeholder="Name"
+    >
+    <input 
+        class="form-control"
+        type="text" 
+        ng-model="contact.phone" 
+        ng-required="true" 
+        ng-pattern="/^\d{4,5}-\d{4}$/"
+        placeholder="Phone"
+    >
+
+    <select 
+        ng-model="contact.operator"
+        ng-options="operator.name + '('+(operator.price | currency)+')' for operator in operators"
+    >
+        <option value="">Select an operator</option>
+    </select>
+</form>
+
+<button ng-click="addContact(contact)" ng-disabled="!contact.name || !contact.phone">Add Contact</button>
