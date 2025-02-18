@@ -1,9 +1,11 @@
 package com.phonebook.model;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 @Entity
 @Table(name = "contacts")
 public class Contact {

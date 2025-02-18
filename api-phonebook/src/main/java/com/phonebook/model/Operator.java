@@ -1,11 +1,13 @@
 package com.phonebook.model;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
-import java.util.Set;
+import java.util.List;
 
 @Data
+@Builder
 @Entity
 @Table(name = "operators")
 public class Operator {
@@ -16,5 +18,5 @@ public class Operator {
     private String category;
     private Integer price;
     @OneToMany(mappedBy="operator", cascade = CascadeType.ALL)
-    private Set<Contact> contact;
+    private List<Contact> contacts;
 }
